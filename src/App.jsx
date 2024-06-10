@@ -1,5 +1,11 @@
+import HeaderCMP from "./Components/Header/HeaderCMP";
+
 function App() {
-  return <div>hello</div>;
+  return (
+    <div className="divAllContent">
+      <HeaderCMP />
+    </div>
+  );
 }
 
 export default App;
