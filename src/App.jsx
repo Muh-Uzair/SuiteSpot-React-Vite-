@@ -1,5 +1,10 @@
 import HeaderCMP from "./Components/Header/HeaderCMP";
-// comment
+
+function print_hello() {
+  console.log("hello");
+}
+print_hello();
+
 function App() {
   return (
     <div className="divAllContent">
