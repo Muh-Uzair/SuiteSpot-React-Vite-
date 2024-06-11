@@ -1,6 +1,7 @@
 import CitySliderCMP from "../Components/HomepagePG/CitySliderCMP";
 import HomePGinfoCMP from "../Components/HomepagePG/HomePGinfoCMP";
 import HomepagePGheader from "../Components/HomepagePG/HomepagePGheader";
+import HotelBookingSouvenirs from "../Components/HomepagePG/HotelBookingSouvenirs";
 
 export default function HomePG() {
   return (
@@ -20,6 +21,7 @@ export default function HomePG() {
       <HomepagePGheader />
       <HomePGinfoCMP />
       <CitySliderCMP />
+      <HotelBookingSouvenirs />
     </div>
   );
 }
