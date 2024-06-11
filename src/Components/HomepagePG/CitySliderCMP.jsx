@@ -60,14 +60,14 @@ export default function CitySliderCMP() {
 
   function buttonLeftClick() {
     if (currSlide === 0) {
-      setCurrSlide(totalCities - 1);
+      setCurrSlide(totalCities - 3);
     } else {
       setCurrSlide((currSlide) => currSlide - 1);
     }
   }
 
   function buttonRightClick() {
-    if (currSlide === totalCities - 1) {
+    if (currSlide === totalCities - 3) {
       setCurrSlide(0);
     } else {
       setCurrSlide((currSlide) => currSlide + 1);
