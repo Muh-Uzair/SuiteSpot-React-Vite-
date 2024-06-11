@@ -1,0 +1,23 @@
+.divMain {
+  width: 95%;
+  height: 313px;
+  background-color: rgba(0, 255, 255, 0);
+
+  display: flex;
+  gap: 50px;
+}
+
+.sectionImg {
+  width: 50%;
+}
+.imgHotelRoom1 {
+  width: 100%;
+}
+
+.sectionText {
+  width: 50%;
+}
+.textInfo {
+  font-weight: 700;
+  font-size: 22px;
+}
