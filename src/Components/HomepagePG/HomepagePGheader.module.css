@@ -30,7 +30,7 @@
 .divBookAnyWhere {
   background-color: rgb(255, 255, 255);
   width: 200px;
-  height: 70%;
+  height: 65%;
   margin-left: 5%;
   display: flex;
   border-radius: 2px;
@@ -39,7 +39,7 @@
 .divPayBackGuarantee {
   background-color: rgb(255, 255, 255);
   width: 200px;
-  height: 70%;
+  height: 65%;
   margin-left: 5%;
   display: flex;
   border-radius: 2px;
