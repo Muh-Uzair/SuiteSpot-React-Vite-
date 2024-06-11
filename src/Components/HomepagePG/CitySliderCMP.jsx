@@ -76,40 +76,34 @@ export default function CitySliderCMP() {
 
   return (
     <div className={styles.divMain}>
-      <div className={styles.divButtonLeft}>
+      <section className={styles.sectionAllCities}>
         <button className={styles.buttonLeft} onClick={() => buttonLeftClick()}>
           <img src="../../../assets/HomepagePG/chevron-left.png" />
         </button>
-      </div>
-      <div>
-        <section className={styles.sectionAllCities}>
-          {allCities.map((val, i) => (
-            <div
-              className={styles.divCitySlide}
-              key={i}
-              style={{ transform: `translateX(${100 * (i - currSlide)}%)` }}
-            >
-              <main className={styles.mainCityBox}>
-                <section className={styles.cityImg}>
-                  <img src={val.img} />
-                </section>
-                <section className={styles.sectionCityNameButton}>
-                  <span>{val.cityName}</span>
-                  <button>View Hotels</button>
-                </section>
-              </main>
-            </div>
-          ))}
-        </section>
-      </div>
-      <div className={styles.divButtonRight}>
+        {allCities.map((val, i) => (
+          <div
+            className={styles.divCitySlide}
+            key={i}
+            style={{ transform: `translateX(${100 * (i - currSlide)}%)` }}
+          >
+            <main className={styles.mainCityBox}>
+              <section className={styles.cityImg}>
+                <img src={val.img} />
+              </section>
+              <section className={styles.sectionCityNameButton}>
+                <span>{val.cityName}</span>
+                <button>View Hotels</button>
+              </section>
+            </main>
+          </div>
+        ))}
         <button
           className={styles.buttonRight}
           onClick={() => buttonRightClick()}
         >
           <img src="../../../assets/HomepagePG/chevron-right.png" />
         </button>
-      </div>
+      </section>
     </div>
   );
 }
