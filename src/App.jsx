@@ -9,9 +9,6 @@ import HomePG from "./Pages/HomePG";
 
 // header merged
 
-const x = 23;
-console.log(x);
-
 function App() {
   return (
     <BrowserRouter>
