@@ -1,0 +1,70 @@
+.divHeader {
+  width: 95%;
+  height: 170px;
+  background-color: black;
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+
+  border-radius: 2px;
+}
+
+.divIntroBar {
+  background-color: rgba(121, 67, 0, 0);
+  width: 36%;
+  height: 100%;
+  padding: 0px 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.textFindYourself {
+  color: white;
+  font-size: 25px;
+  font-weight: 500;
+  width: 100%;
+  background-color: rgba(0, 255, 255, 0);
+}
+
+.divBookAnyWhere {
+  background-color: rgb(255, 255, 255);
+  width: 200px;
+  height: 65%;
+  margin-left: 5%;
+  display: flex;
+  border-radius: 2px;
+}
+
+.divPayBackGuarantee {
+  background-color: rgb(255, 255, 255);
+  width: 200px;
+  height: 65%;
+  margin-left: 5%;
+  display: flex;
+  border-radius: 2px;
+}
+
+.sectionImg {
+  background-color: rgba(0, 255, 255, 0);
+  width: 120px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.imgBed {
+  width: 40px;
+}
+.imgCalender {
+  width: 30px;
+}
+
+.sectionText {
+  display: flex;
+  align-items: center;
+}
+.textInfo {
+  font-weight: 600;
+  font-size: 14px;
+}

@@ -1,30 +1,41 @@
+import { NavLink } from "react-router-dom";
 import headerStyles from "../Header/HeaderCMP.module.css";
 
 export default function HeaderCMP() {
   return (
-    <header className={headerStyles.header}>
-      <div className={headerStyles.logo}>
-        <img
-          className={headerStyles.imgLogo}
-          src="../.././assets/Header-assets/SuiteSpot-logo.png"
-        />
-      </div>
-      <div className={headerStyles.divNavButtons}>
-        <ul>
-          <li>
-            <span>Home</span>
-          </li>
-          <li>
-            <span>Hotels</span>
-          </li>
-          <li>
-            <span>Souvenirs</span>
-          </li>
-          <li>
-            <span>About</span>
-          </li>
-        </ul>
-      </div>
-    </header>
+    <div className={headerStyles.divHeader}>
+      <header className={headerStyles.header}>
+        <div className={headerStyles.logo}>
+          <img
+            className={headerStyles.imgLogo}
+            src="../.././assets/Header-assets/SuiteSpot-logo.png"
+          />
+        </div>
+        <div className={headerStyles.divNavButtons}>
+          <ul>
+            <li>
+              <span>
+                <NavLink to="/">HOME</NavLink>
+              </span>
+            </li>
+            <li>
+              <span>
+                <NavLink to="/hotels">HOTELS</NavLink>
+              </span>
+            </li>
+            <li>
+              <span>
+                <NavLink to="/souvenirs">SOUVENIRS</NavLink>
+              </span>
+            </li>
+            <li>
+              <span>
+                <NavLink to="/about">ABOUT</NavLink>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </header>
+    </div>
   );
 }
