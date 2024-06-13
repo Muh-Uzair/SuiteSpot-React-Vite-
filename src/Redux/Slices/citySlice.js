@@ -1,12 +1,12 @@
 const cityInitialState = {
-  ctyName: "",
+  cityName: "",
 };
 export default function cityReducer(state = cityInitialState, action) {
   switch (action.type) {
     case "changeCityName":
       return { ...state, cityName: action.payload };
     default:
-      state;
+      return state;
   }
 }
 export function changeCityName(r_cityName) {

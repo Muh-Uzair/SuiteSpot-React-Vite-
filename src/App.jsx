@@ -5,12 +5,6 @@ import AboutPG from "./Pages/AboutPG";
 import SouvenirsPG from "./Pages/SouvenirsPG";
 import PageNotFoundPG from "./Pages/PageNotFoundPG";
 import HomePG from "./Pages/HomePG";
-import store from "./Redux/Store";
-
-store.dispatch({ type: "isLoading/true" });
-console.log(store.getState());
-
-// header merged
 
 function App() {
   return (

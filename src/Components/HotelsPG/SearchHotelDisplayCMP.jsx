@@ -1,12 +1,21 @@
 import { useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./SearchHotelDisplayCMP.module.css";
 import { HotelsPGContext } from "../../Pages/AllHotelsPG";
+import {
+  setIsLoadingTrue,
+  setIsLoadingFalse,
+} from "../../Redux/Slices/loadingSlice";
 
 export default function SearchHotelDisplayCMP() {
   const { cityName, dispatch } = useContext(HotelsPGContext);
+  const reduxDispatch = useDispatch();
+  const loadingState = useSelector((state) => state.loadingState);
+  console.log(loadingState);
 
   async function getCityLatLng() {
     try {
+      reduxDispatch(setIsLoadingTrue());
       const res = await fetch(
         `https://nominatim.openstreetmap.org/search?city=${cityName}&format=json`
       );
@@ -18,6 +27,8 @@ export default function SearchHotelDisplayCMP() {
       });
     } catch (error) {
       console.log(error);
+    } finally {
+      reduxDispatch(setIsLoadingFalse());
     }
   }
   function handleFormSubmit(e) {
