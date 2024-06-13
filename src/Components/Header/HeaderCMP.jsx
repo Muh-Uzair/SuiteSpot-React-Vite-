@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import headerStyles from "../Header/HeaderCMP.module.css";
 
 export default function HeaderCMP() {
@@ -6,10 +6,12 @@ export default function HeaderCMP() {
     <div className={headerStyles.divHeader}>
       <header className={headerStyles.header}>
         <div className={headerStyles.logo}>
-          <img
-            className={headerStyles.imgLogo}
-            src="../.././assets/Header-assets/SuiteSpot-logo.png"
-          />
+          <Link to="/">
+            <img
+              className={headerStyles.imgLogo}
+              src="../.././assets/Header-assets/SuiteSpot-logo.png"
+            />
+          </Link>
         </div>
         <div className={headerStyles.divNavButtons}>
           <ul>

@@ -1,0 +1,40 @@
+.divSearchCityOther {
+  position: absolute;
+  left: 50px;
+  top: 50px;
+  background-color: rgb(17, 103, 103);
+  width: 350px;
+  z-index: 550;
+}
+
+.formCitySearch {
+  background-color: pink;
+  display: flex;
+}
+.formCitySearch input {
+  width: 284px;
+  height: 35px;
+  padding-left: 20px;
+  font-size: 15px;
+  border: 1px solid rgb(113, 113, 113);
+  outline: none;
+}
+.formCitySearch button {
+  border: 1px solid rgb(113, 113, 113);
+  background-color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 60px;
+  height: 39px;
+  margin-left: -17px;
+  cursor: pointer;
+}
+.formCitySearch button:hover {
+  background-color: rgb(242, 242, 242);
+}
+.formCitySearch button:active {
+  background-color: rgb(255, 255, 255);
+}

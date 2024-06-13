@@ -1,3 +1,5 @@
+@import "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+
 body,
 #root {
   width: 100vw;
@@ -10,9 +12,9 @@ body,
 }
 
 .divAllContent {
-  width: 1000vw;
-  height: 100vh;
-  overflow-y: scroll;
+  width: 1000%;
+  height: 100%;
+  overflow-y: auto;
   overflow-x: hidden;
   margin: 0px;
 

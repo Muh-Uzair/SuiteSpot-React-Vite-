@@ -1,11 +1,14 @@
 import HeaderCMP from "./Components/Header/HeaderCMP";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import HotelsPG from "./Pages/HotelsPG";
+import AllHotelsPG from "./Pages/AllHotelsPG";
 import AboutPG from "./Pages/AboutPG";
 import SouvenirsPG from "./Pages/SouvenirsPG";
 import PageNotFoundPG from "./Pages/PageNotFoundPG";
 import HomePG from "./Pages/HomePG";
+import store from "./Redux/Store";
+
+store.dispatch({ type: "isLoading/true" });
+console.log(store.getState());
 
 // header merged
 
@@ -17,7 +20,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<HomePG />} />
-          <Route path="hotels" element={<HotelsPG />} />
+          <Route path="hotels" element={<AllHotelsPG />} />
           <Route path="souvenirs" element={<SouvenirsPG />} />
           <Route path="about" element={<AboutPG />} />
           <Route path="*" element={<PageNotFoundPG />} />
