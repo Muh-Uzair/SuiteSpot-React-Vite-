@@ -18,7 +18,7 @@ const getAccessToken = async () => {
       })
     );
     accessToken = response.data.access_token;
-    console.log(accessToken);
+    // console.log(accessToken);
     return accessToken;
   } catch (error) {
     console.error("Error fetching access token:", error);
@@ -37,29 +37,30 @@ export const getHotels = async (cityCode) => {
         Authorization: `Bearer ${accessToken}`,
       },
     });
+
     return response.data.data;
   } catch (error) {
     console.error("Error fetching hotels:", error);
   }
 };
 
-export const getHotelByID = async (hotelID) => {
-  const AMADEUS_HOTELS_URL = `https://test.api.amadeus.com/v1/reference-data/locations/hotels/by-hotels?hotelIds=${hotelID}`;
+// export const getHotelByID = async (hotelID) => {
+//   const AMADEUS_HOTELS_URL = `https://test.api.amadeus.com/v1/reference-data/locations/hotels/by-hotels?hotelIds=${hotelID}`;
 
-  if (!accessToken) {
-    await getAccessToken();
-  }
-  try {
-    const response = await axios.get(AMADEUS_HOTELS_URL, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
-    console.log(response.data.data);
-    return response.data.data;
-  } catch (error) {
-    console.error("Error fetching hotels:", error);
-  }
-};
+//   if (!accessToken) {
+//     await getAccessToken();
+//   }
+//   try {
+//     const response = await axios.get(AMADEUS_HOTELS_URL, {
+//       headers: {
+//         Authorization: `Bearer ${accessToken}`,
+//       },
+//     });
+//     console.log(response.data.data);
+//     return response.data.data;
+//   } catch (error) {
+//     console.error("Error fetching hotels:", error);
+//   }
+// };
 
-getHotelByID(`HSLISAMJ`);
+// getHotelByID(`HSLISAMJ`);

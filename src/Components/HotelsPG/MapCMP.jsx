@@ -2,9 +2,11 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import PropTypes from "prop-types";
 import { useContext } from "react";
 import { HotelsPGContext } from "../../Pages/AllHotelsPG";
+import { useSelector } from "react-redux";
 
 export default function MapCMP() {
-  const { mapPosition, cityName } = useContext(HotelsPGContext);
+  const { mapPosition } = useContext(HotelsPGContext);
+  const { cityName } = useSelector((state) => state.cityState);
 
   return (
     <MapContainer

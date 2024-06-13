@@ -19,14 +19,10 @@ export const HotelsPGContext = createContext();
 // Initial State
 const initialState = {
   mapPosition: [40, 0],
-  cityName: "",
 };
 // Reducer
 function reducer(state, action) {
   switch (action.type) {
-    case "cityNameChanged":
-      return { ...state, cityName: action.payload };
-
     case "updateLatLng":
       return { ...state, mapPosition: action.payload };
 
@@ -36,13 +32,10 @@ function reducer(state, action) {
 }
 
 export default function AllHotelsPG() {
-  const [{ mapPosition, cityName }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [{ mapPosition }, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <HotelsPGContext.Provider value={{ cityName, dispatch, mapPosition }}>
+    <HotelsPGContext.Provider value={{ dispatch, mapPosition }}>
       <main style={mainStyles}>
         <SearchHotelDisplayCMP />
         <MapCMP />
