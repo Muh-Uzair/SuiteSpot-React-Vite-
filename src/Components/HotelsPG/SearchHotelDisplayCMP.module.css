@@ -48,7 +48,7 @@
 .divAllHotels {
   width: 99.5%;
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid rgb(195, 195, 195);
 }
 
 .gifLoading {
@@ -58,4 +58,10 @@
 
 .noCityFound {
   color: black;
+}
+
+.divHotelsDisplay {
+  width: 100%;
+  height: 100%;
+  background-color: red;
 }

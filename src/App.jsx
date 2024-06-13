@@ -5,10 +5,11 @@ import AboutPG from "./Pages/AboutPG";
 import SouvenirsPG from "./Pages/SouvenirsPG";
 import PageNotFoundPG from "./Pages/PageNotFoundPG";
 import HomePG from "./Pages/HomePG";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
+import HotelsDisplayCMP from "./Components/HotelsPG/HotelsDisplayCMP";
 
 function App() {
-  const { cityName } = useSelector((state) => state.cityState);
+  // const { cityName } = useSelector((state) => state.cityState);
 
   return (
     <BrowserRouter>
@@ -18,10 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePG />} />
           <Route path="hotels" element={<AllHotelsPG />}>
-            <Route
-              path={`hotels/:cityName`}
-              element={<span>Hotels for {cityName}</span>}
-            />
+            <Route path={`hotels/:cityName`} element={<HotelsDisplayCMP />} />
           </Route>
           <Route path="souvenirs" element={<SouvenirsPG />} />
           <Route path="about" element={<AboutPG />} />

@@ -87,7 +87,6 @@ export default function SearchHotelDisplayCMP() {
   useEffect(() => {
     async function getAllHotels() {
       const allHotels = await getHotel(localCityName.toLowerCase());
-      console.log(allHotels);
       if (allHotels) {
         setHotelsFound(true);
         reduxDispatch(setHotels(allHotels));
@@ -185,7 +184,7 @@ export default function SearchHotelDisplayCMP() {
           <span className={styles.noCityFound}>No city found</span>
         )}
         {hotelsFound && (
-          <div>
+          <div className={styles.divHotelsDisplay}>
             <Outlet />
           </div>
         )}
