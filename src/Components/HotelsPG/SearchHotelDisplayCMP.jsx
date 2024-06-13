@@ -102,7 +102,7 @@ export default function SearchHotelDisplayCMP() {
   //__________________________________________________________
   useEffect(() => {
     function navigateToCityHotels() {
-      navigate(localCityName);
+      navigate(`hotels/${localCityName}`);
     }
     if (hotelsArr.length > 0) navigateToCityHotels();
   }, [hotelsArr]);

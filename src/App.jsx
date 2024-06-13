@@ -19,7 +19,7 @@ function App() {
           <Route path="/" element={<HomePG />} />
           <Route path="hotels" element={<AllHotelsPG />}>
             <Route
-              path={cityName}
+              path={`hotels/:cityName`}
               element={<span>Hotels for {cityName}</span>}
             />
           </Route>
