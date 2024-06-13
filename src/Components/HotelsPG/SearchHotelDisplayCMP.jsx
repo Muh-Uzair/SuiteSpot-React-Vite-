@@ -6,9 +6,10 @@ import {
   setIsLoadingTrue,
   setIsLoadingFalse,
 } from "../../Redux/Slices/loadingSlice";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { changeCityName } from "../../Redux/Slices/citySlice";
 import { getHotels } from "../../../amadeusService";
+import { setHotels } from "../../Redux/Slices/hotelsSlice";
 
 const allCities = [
   {
@@ -76,10 +77,35 @@ export default function SearchHotelDisplayCMP() {
   const { dispatch, mapPosition } = useContext(HotelsPGContext);
   const reduxDispatch = useDispatch();
   const { isLoading } = useSelector((state) => state.loadingState);
+  const { hotelsArr } = useSelector((state) => state.hotelState);
   const [noCityFound, setNoCityFound] = useState(false);
   const [hotelsFound, setHotelsFound] = useState(false);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [localCityName, setLocalCityName] = useState("");
+
+  //__________________________________________________________
+  useEffect(() => {
+    async function getAllHotels() {
+      const allHotels = await getHotel(localCityName.toLowerCase());
+      console.log(allHotels);
+      if (allHotels) {
+        setHotelsFound(true);
+        reduxDispatch(setHotels(allHotels));
+        reduxDispatch(setIsLoadingFalse());
+      } else if (!allHotels) {
+        setHotelsFound(false);
+      }
+    }
+    if (localCityName) getAllHotels();
+  }, [mapPosition]);
+
+  //__________________________________________________________
+  useEffect(() => {
+    function navigateToCityHotels() {
+      navigate(localCityName);
+    }
+    if (hotelsArr.length > 0) navigateToCityHotels();
+  }, [hotelsArr]);
 
   //__________________________________________________________
   async function getCityLatLng() {
@@ -104,30 +130,15 @@ export default function SearchHotelDisplayCMP() {
       }
     } catch (error) {
       console.log(error);
-    } finally {
-      reduxDispatch(setIsLoadingFalse());
     }
   }
-
-  useEffect(() => {
-    async function getAllHotels() {
-      const allHotels = await getHotel(localCityName.toLowerCase());
-      console.log(allHotels);
-      if (allHotels) {
-        setHotelsFound(true);
-        // navigate(localCityName);
-      } else if (!allHotels) {
-        setHotelsFound(false);
-      }
-    }
-    if (localCityName) getAllHotels();
-  }, [mapPosition]);
 
   //__________________________________________________________
   function handleFormSubmit(e) {
     e.preventDefault();
-    setNoCityFound(false);
     reduxDispatch(changeCityName(localCityName));
+    // if (hotelsArr.length > 0) reduxDispatch(setHotelsEmpty());
+    setNoCityFound(false);
 
     if (localCityName) getCityLatLng();
   }
