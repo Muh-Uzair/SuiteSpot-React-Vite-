@@ -78,6 +78,7 @@ export default function SearchHotelDisplayCMP() {
   const reduxDispatch = useDispatch();
   const { isLoading } = useSelector((state) => state.loadingState);
   const { hotelsArr } = useSelector((state) => state.hotelState);
+  const { cityName } = useSelector((state) => state.cityState);
   const [noCityFound, setNoCityFound] = useState(false);
   const [hotelsFound, setHotelsFound] = useState(false);
   const navigate = useNavigate();
@@ -101,7 +102,7 @@ export default function SearchHotelDisplayCMP() {
   //__________________________________________________________
   useEffect(() => {
     function navigateToCityHotels() {
-      navigate(`hotels/${localCityName}`);
+      navigate(`${localCityName}`);
     }
     if (hotelsArr.length > 0) navigateToCityHotels();
   }, [hotelsArr]);
@@ -126,6 +127,8 @@ export default function SearchHotelDisplayCMP() {
         });
       } else if (data.length === 0) {
         setNoCityFound(true);
+        reduxDispatch(setIsLoadingFalse());
+        navigate("/hotels");
       }
     } catch (error) {
       console.log(error);
@@ -163,33 +166,37 @@ export default function SearchHotelDisplayCMP() {
         </button>
       </form>
 
-      <div
-        className={styles.divAllHotels}
-        style={
-          isLoading || noCityFound
-            ? {
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }
-            : {}
-        }
-      >
-        {isLoading && (
-          <img
-            className={styles.gifLoading}
-            src="../../.././assets/HotelsPG/loading.gif"
-          />
-        )}
-        {noCityFound && (
-          <span className={styles.noCityFound}>No city found</span>
-        )}
-        {hotelsFound && (
-          <div className={styles.divHotelsDisplay}>
-            <Outlet />
+      {cityName && (
+        <>
+          <div
+            className={styles.divAllHotels}
+            style={
+              isLoading || noCityFound
+                ? {
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }
+                : {}
+            }
+          >
+            {isLoading && (
+              <img
+                className={styles.gifLoading}
+                src="../../.././assets/HotelsPG/loading.gif"
+              />
+            )}
+            {noCityFound && (
+              <span className={styles.noCityFound}>No city found</span>
+            )}
+            {hotelsFound && (
+              <div className={styles.divHotelsDisplay}>
+                <Outlet />
+              </div>
+            )}
           </div>
-        )}
-      </div>
+        </>
+      )}
     </div>
   );
   //------------------------------------------------------------------------------

@@ -7,6 +7,51 @@
   grid-template-rows: 1fr 50px;
 }
 
+.sectionHotelsDisplay ul {
+  list-style: none;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.sectionHotelsDisplay li {
+  background-color: rgba(0, 255, 255, 0);
+  border-bottom: 1px solid rgb(228, 228, 228);
+  margin-left: -40px;
+  height: 60px;
+
+  display: grid;
+  grid-template-columns: 80px 1fr;
+}
+.sectionHotelsDisplay li:hover {
+  background-color: rgba(243, 243, 243, 0.63);
+}
+
+.divImg {
+  background-color: aquamarine;
+}
+.divHotelName {
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%; /* Ensure it takes full available width */
+}
+.textHotelName {
+  margin: 0px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: 10px;
+}
+.textHotel {
+  position: absolute;
+  top: 34px;
+  font-weight: 500;
+  color: rgb(139, 139, 139);
+  font-size: 13px;
+}
 .sectionButtons {
   background-color: rgb(255, 255, 255);
 

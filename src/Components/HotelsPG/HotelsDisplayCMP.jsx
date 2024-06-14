@@ -21,29 +21,39 @@ export default function HotelsDisplayCMP() {
     if (currPage >= 1) prepareArr();
   }, [currPage]);
 
-  console.log(hotelsArr);
+  // console.log(hotelsArr);
   if (isLoading) return null;
   return (
     <div className={styles.divMain}>
       <section className={styles.sectionHotelsDisplay}>
         <ul>
           {arrForDisplay.map((val, i) => (
-            <li key={i}>{val.name}</li>
+            <li key={i}>
+              <div className={styles.divImg}></div>
+              <div className={styles.divHotelName}>
+                <span className={styles.textHotelName}>{val.name}</span>
+                <span className={styles.textHotel}>Hotel</span>
+              </div>
+            </li>
           ))}
         </ul>
       </section>
       <section className={styles.sectionButtons}>
         <button
-          style={currPage === 1 ? { opacity: "0" } : {}}
+          style={currPage === 1 ? { opacity: "0", pointerEvents: "none" } : {}}
           onClick={() => setCurrPage((currPage) => currPage - 1)}
         >
-          Page {currPage - 1}
+          Page <strong>{currPage - 1}</strong>
         </button>
         <button
-          style={arrForDisplay.length < 10 ? { opacity: "0" } : {}}
+          style={
+            arrForDisplay.length < 10
+              ? { opacity: "0", pointerEvents: "none" }
+              : {}
+          }
           onClick={() => setCurrPage((currPage) => currPage + 1)}
         >
-          Page {currPage + 1}
+          Page <strong>{currPage + 1}</strong>
         </button>
       </section>
     </div>
