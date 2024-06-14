@@ -138,6 +138,7 @@ export default function SearchHotelDisplayCMP() {
     reduxDispatch(changeCityName(localCityName));
     // if (hotelsArr.length > 0) reduxDispatch(setHotelsEmpty());
     setNoCityFound(false);
+    setHotelsFound(false);
 
     if (localCityName) getCityLatLng();
   }
