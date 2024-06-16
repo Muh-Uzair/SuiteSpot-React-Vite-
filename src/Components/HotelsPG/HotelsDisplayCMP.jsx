@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import styles from "./HotelsDisplayCMP.module.css";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function HotelsDisplayCMP() {
   const { isLoading } = useSelector((state) => state.loadingState);
@@ -28,13 +29,15 @@ export default function HotelsDisplayCMP() {
       <section className={styles.sectionHotelsDisplay}>
         <ul>
           {arrForDisplay.map((val, i) => (
-            <li key={i}>
-              <div className={styles.divImg}></div>
-              <div className={styles.divHotelName}>
-                <span className={styles.textHotelName}>{val.name}</span>
-                <span className={styles.textHotel}>Hotel</span>
-              </div>
-            </li>
+            <Link className={styles.linkHotelItem} to={`${val.name}`} key={i}>
+              <li key={i}>
+                <div className={styles.divImg}></div>
+                <div className={styles.divHotelName}>
+                  <span className={styles.textHotelName}>{val.name}</span>
+                  <span className={styles.textHotel}>Hotel</span>
+                </div>
+              </li>
+            </Link>
           ))}
         </ul>
       </section>

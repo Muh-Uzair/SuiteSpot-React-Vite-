@@ -22,7 +22,13 @@
   grid-template-columns: 80px 1fr;
 }
 .sectionHotelsDisplay li:hover {
-  background-color: rgba(243, 243, 243, 0.63);
+  background-color: rgb(244, 244, 244);
+}
+.sectionHotelsDisplay li:active {
+  background-color: rgb(235, 235, 235);
+}
+.linkHotelItem {
+  color: black;
 }
 
 .divImg {

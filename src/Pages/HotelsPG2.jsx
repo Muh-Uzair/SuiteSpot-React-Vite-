@@ -8,6 +8,6 @@ const styles = {
   position: "relative",
 };
 
-export default function PageNotFoundPG() {
-  return <main style={styles}>PageNotFound</main>;
+export default function HotelsPG2() {
+  return <main style={styles}>Hotels</main>;
 }

@@ -6,10 +6,11 @@ import {
   setIsLoadingTrue,
   setIsLoadingFalse,
 } from "../../Redux/Slices/loadingSlice";
-import { Outlet, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { changeCityName } from "../../Redux/Slices/citySlice";
 import { getHotels } from "../../../amadeusService";
 import { setHotels } from "../../Redux/Slices/hotelsSlice";
+import HotelsDisplayCMP from "./HotelsDisplayCMP";
 
 const allCities = [
   {
@@ -191,7 +192,7 @@ export default function SearchHotelDisplayCMP() {
             )}
             {hotelsFound && (
               <div className={styles.divHotelsDisplay}>
-                <Outlet />
+                <HotelsDisplayCMP />
               </div>
             )}
           </div>

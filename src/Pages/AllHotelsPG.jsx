@@ -1,6 +1,8 @@
 import { createContext, useReducer } from "react";
 import SearchHotelDisplayCMP from "../Components/HotelsPG/SearchHotelDisplayCMP";
 import MapCMP from "../Components/HotelsPG/MapCMP";
+//import HotelDetailsCMP from "../Components/HotelsPG/HotelDetailsCMP";
+import { Outlet } from "react-router-dom";
 
 // styles for main
 const mainStyles = {
@@ -39,6 +41,7 @@ export default function AllHotelsPG() {
       <main style={mainStyles}>
         <SearchHotelDisplayCMP />
         <MapCMP />
+        <Outlet />
       </main>
     </HotelsPGContext.Provider>
   );

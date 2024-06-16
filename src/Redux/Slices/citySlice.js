@@ -6,7 +6,7 @@ export default function cityReducer(state = cityInitialState, action) {
     case "changeCityName":
       return { ...state, cityName: action.payload };
     case "setCityEmpty":
-      return { ...state, cityName: [] };
+      return { ...state, cityName: "" };
     default:
       return state;
   }
