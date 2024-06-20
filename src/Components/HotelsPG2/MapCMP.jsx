@@ -31,7 +31,7 @@ export default function MapCMP() {
 }
 
 ChangeCenter.propTypes = {
-  position: PropTypes.array,
+  position: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
 function ChangeCenter({ position }) {
