@@ -3,25 +3,34 @@ import styles from "./HotelSearchDisplayCMP.module.css";
 import { HotelsPGContext } from "../../Pages/HotelsPG2";
 import MessageCMP from "../general/MessageCMP";
 import getHotel from "./essential";
+import DivCitySearchCMP from "./DivCitySearchCMP";
+import { DivButtons } from "./DivButtons";
+import { Outlet, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setDisplayArr } from "../../Redux/Slices/HotelsPG2";
 
 export default function HotelSearchDisplayCMP() {
   const [cityName, setCityName] = useState("");
   const { dispatch, appStatus, hotelsArr } = useContext(HotelsPGContext);
   const [isLoading, setIsLoading] = useState(false);
   const [pageNum, setPageNum] = useState(1);
-  const [displayHotels, setDisplayHotels] = useState([]);
+  const navigate = useNavigate();
+  const { displayArr } = useSelector((state) => state.reduxHotelsPG2State);
+  const reduxDispatch = useDispatch();
 
   useEffect(() => {
     let newArr = [];
-    function callback() {
+    function makeHotelsChunk() {
       for (let i = pageNum * 10 - 10; i < pageNum * 10; i++) {
         if (hotelsArr[i]) {
           newArr.push(hotelsArr[i]);
         }
       }
-      setDisplayHotels(newArr);
+
+      reduxDispatch(setDisplayArr(newArr));
+      navigate(cityName);
     }
-    if (hotelsArr.length > 0) callback();
+    if (hotelsArr.length > 0) makeHotelsChunk();
   }, [hotelsArr, pageNum]);
 
   async function getHotelList() {
@@ -57,64 +66,37 @@ export default function HotelSearchDisplayCMP() {
 
   function handleFormSubmit(e) {
     e.preventDefault();
+    dispatch({ type: "backToInitial" });
     getHotelList();
   }
 
   return (
     <div className={styles.divMainBox}>
-      <div className={styles.divCitySearch}>
-        <form onSubmit={(e) => handleFormSubmit(e)}>
-          <input
-            type="text"
-            placeholder="Enter city of stay"
-            onChange={(e) => setCityName(e.target.value)}
-          />
-          <button type="submit">
-            <img src="assets/HotelsPG/search.png" />
-          </button>
-        </form>
-      </div>
+      <DivCitySearchCMP
+        handleFormSubmit={handleFormSubmit}
+        setCityName={setCityName}
+      />
 
       <div className={styles.divHotelListAndButtons}>
         <div className={styles.divHotelList}>
           {isLoading && (
             <img
               className={styles.gifLoading}
-              src="assets/HotelsPG/loading.gif"
+              src="/assets/HotelsPG/loading.gif"
             />
           )}
-          {displayHotels && (
-            <ul>
-              {displayHotels.map((val, i) => (
-                <li key={i}>{val.name}</li>
-              ))}
-            </ul>
-          )}
+          {appStatus === "hotelsFound" && <Outlet />}
           {appStatus === "cityNotFound" && (
             <MessageCMP message={"City not found ❌"} />
           )}
+          {/* <Outlet /> */}
         </div>
 
-        <div className={styles.divButtons}>
-          <button
-            style={pageNum === 1 ? { opacity: "0", pointerEvents: "none" } : {}}
-            onClick={() => setPageNum((pageNum) => pageNum - 1)}
-          >
-            <img src="assets/HomepagePG/chevron-left.png" />
-            <span>{pageNum - 1}</span>
-          </button>
-          <button
-            style={
-              displayHotels.length < 10
-                ? { opacity: "0", pointerEvents: "none" }
-                : {}
-            }
-            onClick={() => setPageNum((pageNum) => pageNum + 1)}
-          >
-            <span>{pageNum + 1}</span>
-            <img src="assets/HomepagePG/chevron-right.png" />
-          </button>
-        </div>
+        <DivButtons
+          pageNum={pageNum}
+          setPageNum={setPageNum}
+          displayHotels={displayArr}
+        />
       </div>
     </div>
   );
