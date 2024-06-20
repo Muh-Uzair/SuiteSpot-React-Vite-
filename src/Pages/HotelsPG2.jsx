@@ -17,15 +17,21 @@ const styles = {
 const initialState = {
   mapPosition: [40, 0],
   appStatus: "initial",
+  hotelsArr: [],
 };
 function reducer(state, action) {
   switch (action.type) {
-    case "mapPositionChanged":
-      return { ...state, mapPosition: action.payload, appStatus: "cityFound" };
     case "cityNotFound":
       return { ...state, appStatus: "cityNotFound" };
     case "backToInitial":
       return { ...state, appStatus: "initial" };
+    case "hotelsFound":
+      return {
+        ...state,
+        appStatus: "hotelsFound",
+        hotelsArr: action.payload.allHotels,
+        mapPosition: action.payload.mapPosition,
+      };
 
     default:
       throw new Error("Unknown Action Performed");
@@ -36,7 +42,7 @@ function reducer(state, action) {
 export const HotelsPGContext = createContext();
 
 export default function HotelsPG2() {
-  const [{ mapPosition, appStatus }, dispatch] = useReducer(
+  const [{ mapPosition, appStatus, hotelsArr }, dispatch] = useReducer(
     reducer,
     initialState
   );
@@ -47,6 +53,7 @@ export default function HotelsPG2() {
         dispatch,
         mapPosition,
         appStatus,
+        hotelsArr,
       }}
     >
       <div style={styles}>
