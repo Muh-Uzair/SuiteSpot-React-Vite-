@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import styles from "./HotelSearchDisplayCMP.module.css";
 import { HotelsPGContext } from "../../Pages/HotelsPG2";
 import MessageCMP from "../general/MessageCMP";
+import getHotel from "./essential";
 
 export default function HotelSearchDisplayCMP() {
   const [cityName, setCityName] = useState("");
@@ -19,6 +20,9 @@ export default function HotelSearchDisplayCMP() {
       if (data.length === 0) {
         dispatch({ type: "cityNotFound" });
       } else if (data.length > 0) {
+        const allHotels = await getHotel(cityName);
+        console.log(allHotels);
+        if (allHotels.length > 0) setIsLoading(false);
         dispatch({
           type: "mapPositionChanged",
           payload: [Number(data[0].lat), Number(data[0].lon)],
@@ -26,8 +30,6 @@ export default function HotelSearchDisplayCMP() {
       }
     } catch (error) {
       console.log(error.message);
-    } finally {
-      setIsLoading(false);
     }
   }
 
