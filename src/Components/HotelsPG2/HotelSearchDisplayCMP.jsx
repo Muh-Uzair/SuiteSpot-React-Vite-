@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import styles from "./HotelSearchDisplayCMP.module.css";
 import { HotelsPGContext } from "../../Pages/HotelsPG2";
+import MessageCMP from "../general/MessageCMP";
 
 export default function HotelSearchDisplayCMP() {
   const [cityName, setCityName] = useState("");
@@ -52,6 +53,7 @@ export default function HotelSearchDisplayCMP() {
           </button>
         </form>
       </div>
+
       <div className={styles.divHotelList}>
         {isLoading && (
           <img
@@ -59,8 +61,10 @@ export default function HotelSearchDisplayCMP() {
             src="assets/HotelsPG/loading.gif"
           />
         )}
-        {appStatus === "cityFound" && <p>city found</p>}
-        {appStatus === "cityNotFound" && <p>City not found</p>}
+        {appStatus === "cityFound" && <MessageCMP message={"City found"} />}
+        {appStatus === "cityNotFound" && (
+          <MessageCMP message={"City not found ❌"} />
+        )}
       </div>
     </div>
   );
