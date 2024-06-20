@@ -1,17 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./HotelSearchDisplayCMP.module.css";
+import { HotelsPGContext } from "../../Pages/HotelsPG2";
 
 export default function HotelSearchDisplayCMP() {
-  return (
-    <div className={styles.divMainBox}>
-      <DivSearchHotelList />
-      <DivHotelDetails />
-    </div>
-  );
-}
-
-function DivSearchHotelList() {
   const [cityName, steCityName] = useState("");
+  const { dispatch } = useContext(HotelsPGContext);
 
   async function getHotelList() {
     const res = await fetch(
@@ -19,18 +12,19 @@ function DivSearchHotelList() {
     );
     const data = await res.json();
 
-    console.log(data);
+    dispatch({
+      type: "mapPositionChanged",
+      payload: [data[0].lat, data[0].lon],
+    });
   }
 
   function handleFormSubmit(e) {
     e.preventDefault();
     getHotelList();
-
-    console.log(cityName);
   }
 
   return (
-    <div className={styles.divSearchList}>
+    <div className={styles.divMainBox}>
       <div className={styles.divCitySearch}>
         <form onSubmit={(e) => handleFormSubmit(e)}>
           <input
@@ -46,8 +40,4 @@ function DivSearchHotelList() {
       <div className={styles.divHotelList}>hotel list</div>
     </div>
   );
-}
-
-function DivHotelDetails() {
-  return <div className={styles.divHotelDetails}></div>;
 }
