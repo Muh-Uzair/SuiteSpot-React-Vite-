@@ -111,3 +111,13 @@
   transform: translate(-50%, -50%);
   width: 40px;
 }
+.divLoading,
+.divMSg {
+  background-color: white;
+  z-index: 1000;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+}

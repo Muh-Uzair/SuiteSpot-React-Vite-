@@ -28,7 +28,6 @@ export default function HotelSearchDisplayCMP() {
       }
 
       reduxDispatch(setDisplayArr(newArr));
-      navigate(cityName);
     }
     if (hotelsArr.length > 0) makeHotelsChunk();
   }, [hotelsArr, pageNum]);
@@ -46,6 +45,7 @@ export default function HotelSearchDisplayCMP() {
       } else if (data.length > 0) {
         const allHotels = await getHotel(cityName);
         if (allHotels.length > 0) {
+          navigate(cityName);
           setIsLoading(false);
           dispatch({
             type: "hotelsFound",
@@ -80,16 +80,19 @@ export default function HotelSearchDisplayCMP() {
       <div className={styles.divHotelListAndButtons}>
         <div className={styles.divHotelList}>
           {isLoading && (
-            <img
-              className={styles.gifLoading}
-              src="/assets/HotelsPG/loading.gif"
-            />
+            <div className={styles.divLoading}>
+              <img
+                className={styles.gifLoading}
+                src="/assets/HotelsPG/loading.gif"
+              />
+            </div>
           )}
-          {appStatus === "hotelsFound" && <Outlet />}
           {appStatus === "cityNotFound" && (
-            <MessageCMP message={"City not found ❌"} />
+            <div className={styles.divMSg}>
+              <MessageCMP message={"City not found ❌"} />
+            </div>
           )}
-          {/* <Outlet /> */}
+          <Outlet />
         </div>
 
         <DivButtons

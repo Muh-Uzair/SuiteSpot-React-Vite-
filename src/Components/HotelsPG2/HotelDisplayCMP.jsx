@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./HotelDisplayCMP.module.css";
-// import HotelDetailsCMP from "./HotelDetailsCMP";
-import { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { setHotelID } from "../../Redux/Slices/HotelsPG2";
 
@@ -11,14 +9,12 @@ HotelDisplayCMP.propTypes = {
 };
 
 export default function HotelDisplayCMP() {
-  const [flag, setFlag] = useState(false);
   const reduxDispatch = useDispatch();
   const navigate = useNavigate();
 
-  function hotelClicked(id) {
-    setFlag(true);
-    reduxDispatch(setHotelID(id));
-    navigate("hotelName");
+  function hotelClicked(val) {
+    reduxDispatch(setHotelID(val.hotelId));
+    navigate(`${val.name.replace(/\s+/g, "-")}`);
   }
 
   const { displayArr } = useSelector((state) => state.reduxHotelsPG2State);
@@ -27,7 +23,7 @@ export default function HotelDisplayCMP() {
       <div className={styles.divHotelList}>
         <ul className={styles.hotelListUl}>
           {displayArr?.map((val, i) => (
-            <li key={i} onClick={() => hotelClicked(val.hotelId)}>
+            <li key={i} onClick={() => hotelClicked(val)}>
               <div className={styles.divPicture}>
                 <img src="/assets/HomepagePG/bed-1.png" />
               </div>
@@ -39,7 +35,8 @@ export default function HotelDisplayCMP() {
           ))}
         </ul>
       </div>
-      {flag && <Outlet />}
+
+      <Outlet />
     </div>
   );
 }
