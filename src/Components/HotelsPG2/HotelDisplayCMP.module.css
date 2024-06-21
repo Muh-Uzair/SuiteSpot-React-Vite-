@@ -1,3 +1,11 @@
+.divHotelListAndDetails {
+  background-color: rgba(0, 255, 255, 0);
+  width: 348px;
+
+  display: flex;
+  position: relative;
+}
+
 .hotelListUl {
   list-style: none;
   margin-top: 0;
@@ -9,13 +17,18 @@
   margin-left: 0px;
   background-color: rgba(255, 183, 183, 0);
   border-bottom: 1px solid rgba(0, 0, 0, 0.17);
-  height: 66px;
+  height: 65px;
   display: grid;
   grid-template-columns: 80px 1fr;
   position: relative;
+  cursor: pointer;
+  width: 348px;
 }
 .hotelListUl li:hover {
-  background-color: rgb(243, 243, 243);
+  background-color: rgb(244, 244, 244);
+}
+.hotelListUl li:active {
+  background-color: rgb(255, 255, 255);
 }
 
 .divPicture {
@@ -25,7 +38,7 @@
   align-items: center;
 }
 .divPicture img {
-  width: 30px;
+  width: 25px;
   border: 1px solid rgba(0, 0, 0, 0.087);
   padding: 10px;
   border-radius: 50px;
