@@ -18,6 +18,7 @@ const initialState = {
   mapPosition: [40, 0],
   appStatus: "initial",
   hotelsArr: [],
+  countryName: "",
 };
 function reducer(state, action) {
   switch (action.type) {
@@ -31,6 +32,7 @@ function reducer(state, action) {
         appStatus: "hotelsFound",
         hotelsArr: action.payload.allHotels,
         mapPosition: action.payload.mapPosition,
+        countryName: action.payload.countryName,
       };
 
     default:
@@ -54,6 +56,7 @@ export default function HotelsPG2() {
         mapPosition,
         appStatus,
         hotelsArr,
+        countryName,
       }}
     >
       <div style={styles}>

@@ -40,6 +40,7 @@ export default function HotelSearchDisplayCMP() {
       );
 
       const data = await res.json();
+      // console.log(data);
       if (data.length === 0) {
         dispatch({ type: "cityNotFound" });
       } else if (data.length > 0) {
@@ -52,6 +53,7 @@ export default function HotelSearchDisplayCMP() {
             payload: {
               allHotels,
               mapPosition: [Number(data[0].lat), Number(data[0].lon)],
+              countryName: data[0].display_name.split(", ")[1],
             },
           });
         }

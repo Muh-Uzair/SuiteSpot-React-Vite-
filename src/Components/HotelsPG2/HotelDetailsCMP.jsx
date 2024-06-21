@@ -1,9 +1,10 @@
 import styles from "./HotelDetailsCMP.module.css";
 import PropTypes from "prop-types";
 import { getHotelByID } from "../../../amadeusService";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useSelector } from "react-redux";
 import MessageCMP from "../general/MessageCMP";
+import { HotelsPGContext } from "../../Pages/HotelsPG2";
 
 HotelDetailsCMP.propTypes = {
   hotelId: PropTypes.string,
@@ -13,6 +14,8 @@ let hotelDetailsObj = {};
 export default function HotelDetailsCMP() {
   const [cmpState, setCmpState] = useState("initial");
   const { hotelId } = useSelector((state) => state.reduxHotelsPG2State);
+  const { countryName } = useContext(HotelsPGContext);
+  console.log(countryName);
 
   async function getHotelDetails() {
     try {
@@ -45,9 +48,18 @@ export default function HotelDetailsCMP() {
           <DivHotelPicName />
           <div className={styles.divAllBookingDetails}>
             <div className={styles.divCountryCityPrice}>
-              <div className={styles.divCountry}></div>
-              <div className={styles.divCity}></div>
-              <div className={styles.divPrice}></div>
+              <div className={styles.divCountry}>
+                <img src="/assets/HotelsPG/country.png" />
+                <span>{countryName}Hello</span>
+              </div>
+              <div className={styles.divCity}>
+                <img src="/assets/HotelsPG/city.png" />
+                <span>1000$/room</span>
+              </div>
+              <div className={styles.divPrice}>
+                <img src="/assets/HotelsPG/price.png" />
+                <span>1000$/room</span>
+              </div>
             </div>
             <button className={styles.buttonBookNow}>Book Now</button>
           </div>
