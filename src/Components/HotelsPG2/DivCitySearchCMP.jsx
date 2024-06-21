@@ -1,5 +1,5 @@
-import styles from "./HotelSearchDisplayCMP.module.css";
 import PropTypes from "prop-types";
+import styles from "./HotelSearchDisplayCMP.module.css";
 
 DivCitySearchCMP.propTypes = {
   handleFormSubmit: PropTypes.func.isRequired,

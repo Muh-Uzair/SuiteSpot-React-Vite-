@@ -45,7 +45,6 @@ export default function HotelSearchDisplayCMP() {
         dispatch({ type: "cityNotFound" });
       } else if (data.length > 0) {
         const allHotels = await getHotel(cityName);
-        console.log(allHotels);
         if (allHotels.length > 0) {
           setIsLoading(false);
           dispatch({
@@ -68,6 +67,7 @@ export default function HotelSearchDisplayCMP() {
     e.preventDefault();
     dispatch({ type: "backToInitial" });
     getHotelList();
+    setPageNum(1);
   }
 
   return (
