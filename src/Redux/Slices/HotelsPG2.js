@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 // create initial state
 const initialState = {
   displayArr: [],
-  hotelID: "",
+  hotelId: "",
 };
 
 // create slice
@@ -15,7 +15,7 @@ const HotelsPG2Reducer = createSlice({
       state.displayArr = action.payload;
     },
     setHotelID(state, action) {
-      state.hotelID = action.payload;
+      state.hotelId = action.payload;
     },
   },
 });
