@@ -2,15 +2,17 @@ import styles from "./HotelDetailsCMP.module.css";
 import PropTypes from "prop-types";
 import { getHotelByID } from "../../../amadeusService";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 HotelDetailsCMP.propTypes = {
   hotelId: PropTypes.string,
 };
 
-let hotelDetailsObj = {};
-
-export default function HotelDetailsCMP({ hotelId }) {
+export default function HotelDetailsCMP() {
   const [cmpState, setCmpState] = useState("initial");
+  const { hotelId } = useSelector((state) => state.reduxHotelsPG2State);
+  let hotelDetailsObj = {};
+  console.log(hotelId);
 
   async function getHotelDetails() {
     try {

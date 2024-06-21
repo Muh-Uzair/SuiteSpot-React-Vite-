@@ -9,6 +9,7 @@ import HomePG from "./Pages/HomePG";
 // import HotelDetailsCMP from "./Components/HotelsPG/HotelDetailsCMP";
 import HotelsPG2 from "./Pages/HotelsPG2";
 import HotelDisplayCMP from "./Components/HotelsPG2/HotelDisplayCMP";
+import HotelDetailsCMP from "./Components/HotelsPG2/HotelDetailsCMP";
 
 function App() {
   return (
@@ -19,7 +20,9 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePG />} />
           <Route path="hotels" element={<HotelsPG2 />}>
-            <Route path=":cityName" element={<HotelDisplayCMP />} />
+            <Route path=":cityName" element={<HotelDisplayCMP />}>
+              <Route path=":hotelName" element={<HotelDetailsCMP />} />
+            </Route>
           </Route>
           <Route path="souvenirs" element={<SouvenirsPG />} />
           <Route path="about" element={<AboutPG />} />

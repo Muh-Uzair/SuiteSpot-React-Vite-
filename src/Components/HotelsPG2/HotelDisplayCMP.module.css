@@ -70,5 +70,6 @@
   position: absolute;
   top: 35px;
   font-size: 13px;
-  color: gray;
+  color: rgb(171, 171, 171);
+  font-weight: 500;
 }

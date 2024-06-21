@@ -1,8 +1,10 @@
 import PropTypes from "prop-types";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./HotelDisplayCMP.module.css";
-import HotelDetailsCMP from "./HotelDetailsCMP";
+// import HotelDetailsCMP from "./HotelDetailsCMP";
 import { useState } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+import { setHotelID } from "../../Redux/Slices/HotelsPG2";
 
 HotelDisplayCMP.propTypes = {
   displayHotels: PropTypes.array,
@@ -10,11 +12,13 @@ HotelDisplayCMP.propTypes = {
 
 export default function HotelDisplayCMP() {
   const [flag, setFlag] = useState(false);
-  const [hotelId, setHotelId] = useState({});
+  const reduxDispatch = useDispatch();
+  const navigate = useNavigate();
 
   function hotelClicked(id) {
     setFlag(true);
-    setHotelId(id);
+    reduxDispatch(setHotelID(id));
+    navigate("hotelName");
   }
 
   const { displayArr } = useSelector((state) => state.reduxHotelsPG2State);
@@ -35,7 +39,7 @@ export default function HotelDisplayCMP() {
           ))}
         </ul>
       </div>
-      {flag && <HotelDetailsCMP hotelId={hotelId} />}
+      {flag && <Outlet />}
     </div>
   );
 }
