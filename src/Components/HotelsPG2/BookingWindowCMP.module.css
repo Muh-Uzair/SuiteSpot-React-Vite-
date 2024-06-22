@@ -1,0 +1,9 @@
+.divMainBox {
+  width: 700px;
+  height: 600px;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: -47px;
+  left: 370px;
+  border: 1px solid rgba(0, 0, 0, 0.511);
+}

@@ -44,10 +44,8 @@ function reducer(state, action) {
 export const HotelsPGContext = createContext();
 
 export default function HotelsPG2() {
-  const [{ mapPosition, appStatus, hotelsArr }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [{ mapPosition, appStatus, hotelsArr, countryName }, dispatch] =
+    useReducer(reducer, initialState);
 
   return (
     <HotelsPGContext.Provider

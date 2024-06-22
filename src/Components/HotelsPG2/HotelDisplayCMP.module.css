@@ -13,7 +13,7 @@
   padding: 0; /* Ensure no padding that might affect the layout */
 }
 
-.hotelListUl li {
+.hotelListUl a {
   margin-left: 0px;
   background-color: rgba(255, 183, 183, 0);
   border-bottom: 1px solid rgba(0, 0, 0, 0.17);
@@ -23,11 +23,13 @@
   position: relative;
   cursor: pointer;
   width: 348px;
+
+  color: black;
 }
-.hotelListUl li:hover {
+.hotelListUl a:hover {
   background-color: rgb(244, 244, 244);
 }
-.hotelListUl li:active {
+.hotelListUl a:active {
   background-color: rgb(255, 255, 255);
 }
 
@@ -73,3 +75,23 @@
   color: rgb(171, 171, 171);
   font-weight: 500;
 }
+
+/* .buttonBookNow {
+  position: absolute;
+  right: -60px;
+  bottom: 120px;
+  background-color: black;
+  color: white;
+  border: none;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 2px;
+  cursor: pointer;
+  z-index: 1100;
+}
+.buttonBookNow:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.buttonBookNow:active {
+  background-color: rgba(0, 0, 0, 1);
+} */

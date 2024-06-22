@@ -6,7 +6,7 @@ const allCities = [
     iataCode: "MED",
   },
   {
-    cityName: "new York",
+    cityName: "new york",
     iataCode: "NYC",
   },
   {

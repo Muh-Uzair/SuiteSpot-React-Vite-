@@ -5,6 +5,7 @@ import { useState, useEffect, useContext } from "react";
 import { useSelector } from "react-redux";
 import MessageCMP from "../general/MessageCMP";
 import { HotelsPGContext } from "../../Pages/HotelsPG2";
+import { Link, useParams } from "react-router-dom";
 
 HotelDetailsCMP.propTypes = {
   hotelId: PropTypes.string,
@@ -15,13 +16,14 @@ export default function HotelDetailsCMP() {
   const [cmpState, setCmpState] = useState("initial");
   const { hotelId } = useSelector((state) => state.reduxHotelsPG2State);
   const { countryName } = useContext(HotelsPGContext);
-  console.log(countryName);
+
+  const { cityName } = useParams();
 
   async function getHotelDetails() {
     try {
       setCmpState("isLoading");
       [hotelDetailsObj] = await getHotelByID(hotelId);
-      console.log(hotelDetailsObj);
+      // console.log(hotelDetailsObj);
     } catch (error) {
       setCmpState("error");
     } finally {
@@ -50,18 +52,28 @@ export default function HotelDetailsCMP() {
             <div className={styles.divCountryCityPrice}>
               <div className={styles.divCountry}>
                 <img src="/assets/HotelsPG/country.png" />
-                <span>{countryName}Hello</span>
+                <span>{countryName}</span>
               </div>
               <div className={styles.divCity}>
                 <img src="/assets/HotelsPG/city.png" />
-                <span>1000$/room</span>
+                <span>{`${
+                  cityName.charAt(0).toUpperCase() + cityName.slice(1)
+                }`}</span>
               </div>
               <div className={styles.divPrice}>
                 <img src="/assets/HotelsPG/price.png" />
-                <span>1000$/room</span>
+                <span>
+                  {`${
+                    Math.round((Math.random() * (999 - 100 + 1) + 100) / 10) *
+                    10
+                  }€ / Room`}
+                </span>
               </div>
             </div>
-            <button className={styles.buttonBookNow}>Book Now</button>
+            <div className={styles.divCheckInOutRooms}></div>
+            <Link to="bookingWindow">
+              <button className={styles.buttonBookNow}>Book Now</button>
+            </Link>
           </div>
         </div>
       )}

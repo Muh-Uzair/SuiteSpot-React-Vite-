@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./HotelDisplayCMP.module.css";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { setHotelID } from "../../Redux/Slices/HotelsPG2";
+// import { useState } from "react";
 
 HotelDisplayCMP.propTypes = {
   displayHotels: PropTypes.array,
@@ -10,11 +11,11 @@ HotelDisplayCMP.propTypes = {
 
 export default function HotelDisplayCMP() {
   const reduxDispatch = useDispatch();
-  const navigate = useNavigate();
+  // const [cmpState, setCmpState] = useState("initial");
+  // const { cityName } = useParams();
 
   function hotelClicked(val) {
     reduxDispatch(setHotelID(val.hotelId));
-    navigate(`${val.name.replace(/\s+/g, "-")}`);
   }
 
   const { displayArr } = useSelector((state) => state.reduxHotelsPG2State);
@@ -24,17 +25,23 @@ export default function HotelDisplayCMP() {
         <ul className={styles.hotelListUl}>
           {displayArr?.map((val, i) => (
             <li key={i} onClick={() => hotelClicked(val)}>
-              <div className={styles.divPicture}>
-                <img src="/assets/HomepagePG/bed-1.png" />
-              </div>
-              <div className={styles.divHotelName}>
-                <span className={styles.textHotelName}>{val.name}</span>
-                <span className={styles.textHotel}>Hotel</span>
-              </div>
+              <Link to={`${val.name.replace(/\s+/g, "-")}`}>
+                <div className={styles.divPicture}>
+                  <img src="/assets/HomepagePG/bed-1.png" />
+                </div>
+                <div className={styles.divHotelName}>
+                  <span className={styles.textHotelName}>{val.name}</span>
+                  <span className={styles.textHotel}>Hotel</span>
+                </div>
+              </Link>
             </li>
           ))}
         </ul>
       </div>
+
+      {/* <Link to={`bookingWindow`}>
+        <button className={styles.buttonBookNow}>Book Now</button>
+      </Link> */}
 
       <Outlet />
     </div>

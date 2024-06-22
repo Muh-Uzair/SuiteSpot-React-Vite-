@@ -10,6 +10,7 @@ import HomePG from "./Pages/HomePG";
 import HotelsPG2 from "./Pages/HotelsPG2";
 import HotelDisplayCMP from "./Components/HotelsPG2/HotelDisplayCMP";
 import HotelDetailsCMP from "./Components/HotelsPG2/HotelDetailsCMP";
+import BookingWindowCMP from "./Components/HotelsPG2/BookingWindowCMP";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="hotels" element={<HotelsPG2 />}>
             <Route path=":cityName" element={<HotelDisplayCMP />}>
               <Route path=":hotelName" element={<HotelDetailsCMP />} />
+              <Route path="bookingWindow" element={<BookingWindowCMP />} />
             </Route>
           </Route>
           <Route path="souvenirs" element={<SouvenirsPG />} />
