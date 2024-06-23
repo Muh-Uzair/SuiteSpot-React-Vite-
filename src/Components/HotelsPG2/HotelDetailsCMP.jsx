@@ -16,8 +16,8 @@ export default function HotelDetailsCMP() {
   const [cmpState, setCmpState] = useState("initial");
   const { hotelId } = useSelector((state) => state.reduxHotelsPG2State);
   const { countryName } = useContext(HotelsPGContext);
-
   const { cityName } = useParams();
+  const [rooms, setRooms] = useState(0);
 
   async function getHotelDetails() {
     try {
@@ -32,6 +32,7 @@ export default function HotelDetailsCMP() {
   }
 
   useEffect(() => {
+    console.log(`run`);
     if (hotelId) {
       getHotelDetails();
     }
@@ -70,8 +71,33 @@ export default function HotelDetailsCMP() {
                 </span>
               </div>
             </div>
-            <div className={styles.divCheckInOutRooms}></div>
-            <Link to="bookingWindow">
+            <div className={styles.divCheckInOutRooms}>
+              <div className={styles.divCheckIn}>
+                <span>Check In </span>
+                <input type="date" />
+              </div>
+              <div className={styles.divCheckOut}>
+                <span>Check Out </span>
+                <input type="date" />
+              </div>
+              <div className={styles.divPrice}>
+                <span>Rooms : </span>
+                <input
+                  type="range"
+                  value={rooms}
+                  onChange={(e) => setRooms(e.target.value)}
+                  min="0"
+                  max="5"
+                  step="1"
+                />
+                <span>{rooms}</span>
+              </div>
+            </div>
+            <div className={styles.divTotalPrice}>
+              <span>Total Price : 2000€</span>
+            </div>
+
+            <Link to={`/hotels/${cityName}/bookingWindow`}>
               <button className={styles.buttonBookNow}>Book Now</button>
             </Link>
           </div>

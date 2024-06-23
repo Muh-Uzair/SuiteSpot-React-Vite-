@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./HotelDisplayCMP.module.css";
 import { Link, Outlet } from "react-router-dom";
 import { setHotelID } from "../../Redux/Slices/HotelsPG2";
-// import { useState } from "react";
 
 HotelDisplayCMP.propTypes = {
   displayHotels: PropTypes.array,
@@ -11,8 +10,6 @@ HotelDisplayCMP.propTypes = {
 
 export default function HotelDisplayCMP() {
   const reduxDispatch = useDispatch();
-  // const [cmpState, setCmpState] = useState("initial");
-  // const { cityName } = useParams();
 
   function hotelClicked(val) {
     reduxDispatch(setHotelID(val.hotelId));
@@ -38,10 +35,6 @@ export default function HotelDisplayCMP() {
           ))}
         </ul>
       </div>
-
-      {/* <Link to={`bookingWindow`}>
-        <button className={styles.buttonBookNow}>Book Now</button>
-      </Link> */}
 
       <Outlet />
     </div>
