@@ -17,6 +17,7 @@ export default function HotelSearchDisplayCMP() {
   const navigate = useNavigate();
   const { displayArr } = useSelector((state) => state.reduxHotelsPG2State);
   const reduxDispatch = useDispatch();
+  const [formSubmit, setFormSubmit] = useState("initial");
 
   useEffect(() => {
     let newArr = [];
@@ -67,6 +68,7 @@ export default function HotelSearchDisplayCMP() {
 
   function handleFormSubmit(e) {
     e.preventDefault();
+    setFormSubmit("formSubmitted");
     dispatch({ type: "backToInitial" });
     getHotelList();
     setPageNum(1);
@@ -79,30 +81,36 @@ export default function HotelSearchDisplayCMP() {
         setCityName={setCityName}
       />
 
-      <div className={styles.divHotelListAndButtons}>
-        <div className={styles.divHotelList}>
-          {isLoading && (
-            <div className={styles.divLoading}>
-              <img
-                className={styles.gifLoading}
-                src="/assets/HotelsPG/loading.gif"
-              />
+      {formSubmit === "formSubmitted" && (
+        <div>
+          <div className={styles.divHotelListAndButtons}>
+            <div className={styles.divHotelList}>
+              {isLoading && (
+                <div className={styles.divLoading}>
+                  <img
+                    className={styles.gifLoading}
+                    src="/assets/HotelsPG/loading.gif"
+                  />
+                </div>
+              )}
+              {appStatus === "cityNotFound" && (
+                <div className={styles.divMSg}>
+                  <MessageCMP message={"City not found ❌"} />
+                </div>
+              )}
+              <Outlet />
             </div>
-          )}
-          {appStatus === "cityNotFound" && (
-            <div className={styles.divMSg}>
-              <MessageCMP message={"City not found ❌"} />
-            </div>
-          )}
-          <Outlet />
-        </div>
 
-        <DivButtons
-          pageNum={pageNum}
-          setPageNum={setPageNum}
-          displayHotels={displayArr}
-        />
-      </div>
+            {hotelsArr.length > 0 && (
+              <DivButtons
+                pageNum={pageNum}
+                setPageNum={setPageNum}
+                displayHotels={displayArr}
+              />
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
