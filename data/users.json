@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "username": "Ali",
+      "debit_card_number": "1111",
+      "pin": "11"
+    },
+    {
+      "username": "Ahmad",
+      "debit_card_number": "2222",
+      "pin": "22"
+    },
+    {
+      "username": "Uzair",
+      "debit_card_number": "3333",
+      "pin": "33"
+    },
+    {
+      "username": "Bilal",
+      "debit_card_number": "4444",
+      "pin": "44"
+    },
+    {
+      "username": "Qasim",
+      "debit_card_number": "5555",
+      "pin": "55"
+    }
+  ]
+}

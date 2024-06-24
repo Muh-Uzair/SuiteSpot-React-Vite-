@@ -24,16 +24,15 @@ export default function HotelDetailsCMP() {
       setCmpState("isLoading");
       [hotelDetailsObj] = await getHotelByID(hotelId);
       // console.log(hotelDetailsObj);
+      if (hotelDetailsObj) setCmpState("detailsArrived");
     } catch (error) {
-      setCmpState("error");
-    } finally {
       setCmpState("detailsArrived");
     }
   }
 
   useEffect(() => {
-    console.log(`run`);
     if (hotelId) {
+      // console.log(hotelId);
       getHotelDetails();
     }
   }, [hotelId]);

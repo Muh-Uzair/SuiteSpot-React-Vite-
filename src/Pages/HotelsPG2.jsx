@@ -19,6 +19,8 @@ const initialState = {
   appStatus: "initial",
   hotelsArr: [],
   countryName: "",
+  cardNo: "",
+  pin: "",
 };
 function reducer(state, action) {
   switch (action.type) {
@@ -34,6 +36,16 @@ function reducer(state, action) {
         mapPosition: action.payload.mapPosition,
         countryName: action.payload.countryName,
       };
+    case "cardNoChanged":
+      return {
+        ...state,
+        cardNo: action.payload,
+      };
+    case "pinChanged":
+      return {
+        ...state,
+        pin: action.payload,
+      };
 
     default:
       throw new Error("Unknown Action Performed");
@@ -44,8 +56,10 @@ function reducer(state, action) {
 export const HotelsPGContext = createContext();
 
 export default function HotelsPG2() {
-  const [{ mapPosition, appStatus, hotelsArr, countryName }, dispatch] =
-    useReducer(reducer, initialState);
+  const [
+    { mapPosition, appStatus, hotelsArr, countryName, cardNo, pin },
+    dispatch,
+  ] = useReducer(reducer, initialState);
 
   return (
     <HotelsPGContext.Provider
@@ -55,6 +69,8 @@ export default function HotelsPG2() {
         appStatus,
         hotelsArr,
         countryName,
+        cardNo,
+        pin,
       }}
     >
       <div style={styles}>
